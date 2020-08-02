@@ -16,9 +16,50 @@ namespace WebTrain.Controllers
         private WebContext db = new WebContext();
 
         // GET: Products
-        public ActionResult Index()
+        public ViewResult Index(string sortProducts)
         {
-            return View(db.Products.ToList());
+            ViewBag.CodeSortParm = String.IsNullOrEmpty(sortProducts) ? "Code desc" : "";
+            ViewBag.NameSortParm = sortProducts == "Name" ? "Name desc" : "Name";
+            ViewBag.PriceSortParm = sortProducts == "Price" ? "Price desc" : "Price";
+            ViewBag.CategorySortParm = sortProducts == "Category" ? "Category desc" : "Category";
+
+            var products = from s in db.Products select s;
+
+            switch(sortProducts)
+            {
+                case "Code desc":
+                    products = products.OrderByDescending(s => s.Code);
+                    break;
+
+                case "Name":
+                    products = products.OrderBy(s => s.Name);
+                    break;
+
+                case "Name desc":
+                    products = products.OrderByDescending(s => s.Name);
+                    break;
+
+                case "Price":
+                    products = products.OrderBy(s => s.Price);
+                    break;
+
+                case "Price desc":
+                    products = products.OrderByDescending(s => s.Price);
+                    break;
+
+                case "Category":
+                    products = products.OrderBy(s => s.Category);
+                    break;
+
+                case "Category desc":
+                    products = products.OrderByDescending(s => s.Category);
+                    break;
+
+                default:
+                    products = products.OrderBy(s => s.Code);
+                    break;
+            };
+            return View(products.ToList());
         }
 
         // GET: Products/Details/5
@@ -43,8 +84,6 @@ namespace WebTrain.Controllers
         }
 
         // POST: Products/Create
-        // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. 
-        // Дополнительные сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Code,Name,Price,Category")] Product product)
@@ -76,8 +115,6 @@ namespace WebTrain.Controllers
         }
 
         // POST: Products/Edit/5
-        // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. 
-        // Дополнительные сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,Code,Name,Price,Category")] Product product)

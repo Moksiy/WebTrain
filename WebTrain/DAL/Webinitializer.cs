@@ -61,16 +61,16 @@ namespace WebTrain.DAL
 
             var products = new List<Product>
                 {
-                new Product {ID = new Guid("0d57629c7d6e484797cb9e2fc25083c0"), Name = "Product0", Price = 12, Category = "Category1",Code = "11-2222-AA33"},
+                new Product {ID = new Guid("0d57629c7d6e484797cb9e2fc25083c0"), Name = "Product0", Price = 11, Category = "Category1",Code = "11-2222-AA33"},
                 new Product {ID = new Guid("0d57629c7d6e484797cb9e2fc25083c1"), Name = "Product1", Price = 12, Category = "Category1",Code = "11-2222-BB33"},
-                new Product {ID = new Guid("0d57629c7d6e484797cb9e2fc25083c2"), Name = "Product2", Price = 12, Category = "Category1",Code = "11-2222-CC33"},
-                new Product {ID = new Guid("0d57629c7d6e484797cb9e2fc25083c3"), Name = "Product3", Price = 12, Category = "Category1",Code = "11-2222-DD33"},
-                new Product {ID = new Guid("0d57629c7d6e484797cb9e2fc25083c4"), Name = "Product4", Price = 12, Category = "Category2",Code = "11-2222-EE33"},
-                new Product {ID = new Guid("0d57629c7d6e484797cb9e2fc25083c5"), Name = "Product5", Price = 12, Category = "Category2",Code = "11-2222-FF33"},
-                new Product {ID = new Guid("0d57629c7d6e484797cb9e2fc25083c6"), Name = "Product6", Price = 12, Category = "Category2",Code = "11-2222-GG33"},
-                new Product {ID = new Guid("0d57629c7d6e484797cb9e2fc25083c7"), Name = "Product7", Price = 12, Category = "Category2",Code = "11-2222-HH33"},
-                new Product {ID = new Guid("0d57629c7d6e484797cb9e2fc25083c8"), Name = "Product8", Price = 12, Category = "Category3",Code = "11-2222-II33"},
-                new Product {ID = new Guid("0d57629c7d6e484797cb9e2fc25083c9"), Name = "Product9", Price = 12, Category = "Category3",Code = "11-2222-GG33"}
+                new Product {ID = new Guid("0d57629c7d6e484797cb9e2fc25083c2"), Name = "Product2", Price = 13, Category = "Category1",Code = "11-2222-CC33"},
+                new Product {ID = new Guid("0d57629c7d6e484797cb9e2fc25083c3"), Name = "Product3", Price = 14, Category = "Category1",Code = "11-2222-DD33"},
+                new Product {ID = new Guid("0d57629c7d6e484797cb9e2fc25083c4"), Name = "Product4", Price = 15, Category = "Category2",Code = "11-2222-EE33"},
+                new Product {ID = new Guid("0d57629c7d6e484797cb9e2fc25083c5"), Name = "Product5", Price = 16, Category = "Category2",Code = "11-2222-FF33"},
+                new Product {ID = new Guid("0d57629c7d6e484797cb9e2fc25083c6"), Name = "Product6", Price = 17, Category = "Category2",Code = "11-2222-GG33"},
+                new Product {ID = new Guid("0d57629c7d6e484797cb9e2fc25083c7"), Name = "Product7", Price = 18, Category = "Category2",Code = "11-2222-HH33"},
+                new Product {ID = new Guid("0d57629c7d6e484797cb9e2fc25083c8"), Name = "Product8", Price = 19, Category = "Category3",Code = "11-2222-II33"},
+                new Product {ID = new Guid("0d57629c7d6e484797cb9e2fc25083c9"), Name = "Product9", Price = 20, Category = "Category3",Code = "11-2222-GG33"}
                 };
             products.ForEach(s => context.Products.Add(s));
             context.SaveChanges();

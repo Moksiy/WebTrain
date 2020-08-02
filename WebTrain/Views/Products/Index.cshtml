@@ -12,16 +12,16 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Code)
+           @Html.ActionLink("Код", "Index", new { sortProducts = ViewBag.CodeSortParm})
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.ActionLink("Название", "Index", new { sortProducts = ViewBag.NameSortParm})
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Price)
+            @Html.ActionLink("Цена", "Index", new { sortProducts = ViewBag.PriceSortParm})
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Category)
+            @Html.ActionLink("Категория", "Index", new { sortProducts = ViewBag.CategorySortParm })
         </th>
         <th></th>
     </tr>
