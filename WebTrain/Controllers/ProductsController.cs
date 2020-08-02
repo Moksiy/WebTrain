@@ -16,14 +16,24 @@ namespace WebTrain.Controllers
         private WebContext db = new WebContext();
 
         // GET: Products
-        public ViewResult Index(string sortProducts)
+        public ViewResult Index(string sortProducts, string searchString)
         {
             ViewBag.CodeSortParm = String.IsNullOrEmpty(sortProducts) ? "Code desc" : "";
             ViewBag.NameSortParm = sortProducts == "Name" ? "Name desc" : "Name";
             ViewBag.PriceSortParm = sortProducts == "Price" ? "Price desc" : "Price";
             ViewBag.CategorySortParm = sortProducts == "Category" ? "Category desc" : "Category";
 
+            //Получаем товары из бд
             var products = from s in db.Products select s;
+
+            //Условие поиска
+            if(!String.IsNullOrEmpty(searchString))
+            {
+                products = products.Where(
+                    s => s.Name.ToUpper().Contains(searchString.ToUpper()) || 
+                    s.Code.ToUpper().Contains(searchString.ToUpper()) || 
+                    s.Category.ToUpper().Contains(searchString.ToUpper()));
+            }
 
             switch(sortProducts)
             {
