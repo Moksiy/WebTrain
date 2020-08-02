@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using WebTrain.DAL;
 using WebTrain.Models;
+using PagedList;
+using System.Data.SqlClient;
 
 namespace WebTrain.Controllers
 {
@@ -16,33 +18,45 @@ namespace WebTrain.Controllers
         private WebContext db = new WebContext();
 
         // GET: Products
-        public ViewResult Index(string sortProducts, string searchString)
+        public ViewResult Index(string sortProducts, string currentFilter, string searchString, int? page)
         {
-            ViewBag.CodeSortParm = String.IsNullOrEmpty(sortProducts) ? "Code desc" : "";
-            ViewBag.NameSortParm = sortProducts == "Name" ? "Name desc" : "Name";
+            ViewBag.CurrentSort = sortProducts;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortProducts) ? "Name desc" : "";
+            ViewBag.CodeSortParm = sortProducts == "Code" ? "Code desc" : "Code";
             ViewBag.PriceSortParm = sortProducts == "Price" ? "Price desc" : "Price";
             ViewBag.CategorySortParm = sortProducts == "Category" ? "Category desc" : "Category";
+
+            if (Request.HttpMethod == "GET")
+            {
+                searchString = currentFilter;
+            }
+            else
+            {
+                page = 1;
+            }
+
+            ViewBag.CurrentFilter = searchString;
 
             //Получаем товары из бд
             var products = from s in db.Products select s;
 
             //Условие поиска
-            if(!String.IsNullOrEmpty(searchString))
+            if (!String.IsNullOrEmpty(searchString))
             {
                 products = products.Where(
-                    s => s.Name.ToUpper().Contains(searchString.ToUpper()) || 
-                    s.Code.ToUpper().Contains(searchString.ToUpper()) || 
+                    s => s.Name.ToUpper().Contains(searchString.ToUpper()) ||
+                    s.Code.ToUpper().Contains(searchString.ToUpper()) ||
                     s.Category.ToUpper().Contains(searchString.ToUpper()));
             }
 
-            switch(sortProducts)
+            switch (sortProducts)
             {
                 case "Code desc":
                     products = products.OrderByDescending(s => s.Code);
                     break;
 
-                case "Name":
-                    products = products.OrderBy(s => s.Name);
+                case "Code":
+                    products = products.OrderBy(s => s.Code);
                     break;
 
                 case "Name desc":
@@ -66,10 +80,14 @@ namespace WebTrain.Controllers
                     break;
 
                 default:
-                    products = products.OrderBy(s => s.Code);
+                    products = products.OrderBy(s => s.Name);
                     break;
             };
-            return View(products.ToList());
+
+            int pageSize = 5;
+            int pageIndex = (page ?? 1);
+
+            return View(products.ToPagedList(pageIndex, pageSize));
         }
 
         // GET: Products/Details/5
