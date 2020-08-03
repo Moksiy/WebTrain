@@ -21,16 +21,16 @@
 <table class="table">
     <tr>
         <th>
-            @Html.ActionLink("Код", "Index", new { sortProducts = ViewBag.CodeSortParm, currentFilter = ViewBag.CurrentFilter })
+            @Html.ActionLink("Код", "Index", new { sortProducts = ViewBag.CodeSortParm, currentFilter = ViewBag.CurrentFilter, page = Model.PageNumber })
         </th>
         <th>
-            @Html.ActionLink("Название", "Index", new { sortProducts = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+            @Html.ActionLink("Название", "Index", new { sortProducts = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter, page = Model.PageNumber })
         </th>
         <th>
-            @Html.ActionLink("Цена", "Index", new { sortProducts = ViewBag.PriceSortParm, currentFilter = ViewBag.CurrentFilter })
+            @Html.ActionLink("Цена", "Index", new { sortProducts = ViewBag.PriceSortParm, currentFilter = ViewBag.CurrentFilter, page = Model.PageNumber })
         </th>
         <th>
-            @Html.ActionLink("Категория", "Index", new { sortProducts = ViewBag.CategorySortParm, currentFilter = ViewBag.CurrentFilter })
+            @Html.ActionLink("Категория", "Index", new { sortProducts = ViewBag.CategorySortParm, currentFilter = ViewBag.CurrentFilter, page = Model.PageNumber })
         </th>
         <th></th>
     </tr>
@@ -66,27 +66,27 @@
 
     @if (Model.HasPreviousPage)
     {
-        @Html.ActionLink("<<", "Index", new { page = 1, sortProducts = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+        @Html.ActionLink("⏪", "Index", new { page = 1, sortProducts = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
         @Html.Raw(" ");
-        @Html.ActionLink("< Prev", "Index", new { page = Model.PageNumber - 1, sortProducts = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+        @Html.ActionLink("◀️", "Index", new { page = Model.PageNumber - 1, sortProducts = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
     }
     else
     {
-        @:<<
+        @:⏪
         @Html.Raw(" ");
-        @:< Prev
+        @:◀️
     }
 
     @if (Model.HasNextPage)
     {
-        @Html.ActionLink("Next >", "Index", new { page = Model.PageNumber + 1, sortProducts = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+        @Html.ActionLink("▶️", "Index", new { page = Model.PageNumber + 1, sortProducts = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
         @Html.Raw(" ");
-        @Html.ActionLink(">>", "Index", new { page = Model.PageCount, sortProducts = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+        @Html.ActionLink("⏩", "Index", new { page = Model.PageCount, sortProducts = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
     }
     else
     {
-        @:Next >
+        @:▶️
         @Html.Raw(" ")
-        @:>>
+        @:⏩
     }
 </div>

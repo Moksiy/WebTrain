@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,8 +8,10 @@ namespace WebTrain.Models
 {
     public class Order
     {
+        [Key]
         public Guid ID { get; set; }
         public Guid CustomerID { get; set; }
+        //[DisplayFormat(DataFormatString ="{0:d}", ApplyFormatInEditMode =true)]
         public DateTime OrderDate { get; set; }
         public DateTime ShipmentDate { get; set; }
         public int OrderNumber { get; set; }
