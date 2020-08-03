@@ -8,7 +8,6 @@ namespace WebTrain.Models
 {
     public class Order
     {
-        [Key]
         public Guid ID { get; set; }
         public Guid CustomerID { get; set; }
         //[DisplayFormat(DataFormatString ="{0:d}", ApplyFormatInEditMode =true)]

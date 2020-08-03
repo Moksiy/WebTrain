@@ -9,7 +9,6 @@ namespace WebTrain.Models
 {
     public class OrderElement
     {
-        [Key]
         public Guid ID { get; set; }
         public Guid OrderID { get; set; }
         public Guid ItemID { get; set; }

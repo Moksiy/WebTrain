@@ -9,7 +9,6 @@ namespace WebTrain.Models
 {
     public class Product
     {
-        [Key]
         public Guid ID { get; set; }
         [MaxLength(12)]
         public string Code { get; set; }

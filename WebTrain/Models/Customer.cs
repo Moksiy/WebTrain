@@ -8,7 +8,6 @@ namespace WebTrain.Models
 {
     public class Customer
     {
-        [Key]
         public Guid ID { get; set; }
         public string Name { get; set; }
         [MaxLength(50)]
