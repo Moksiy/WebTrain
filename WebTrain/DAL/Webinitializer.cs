@@ -38,6 +38,7 @@ namespace WebTrain.DAL
                 new Order {ID = new Guid("0d57629c7d6e484797cb9e2fc25083b7"), CustomerID = new Guid("0d57629c7d6e484797cb9e2fc25083f6"), OrderDate = DateTime.Parse("2003-09-06"), ShipmentDate = DateTime.Parse("2003-09-09"), OrderNumber=8, Status="доставлено"},
                 new Order {ID = new Guid("0d57629c7d6e484797cb9e2fc25083b8"), CustomerID = new Guid("0d57629c7d6e484797cb9e2fc25083f7"), OrderDate = DateTime.Parse("2003-09-07"), ShipmentDate = DateTime.Parse("2003-09-12"), OrderNumber=9, Status="доставлено"},
                 new Order {ID = new Guid("0d57629c7d6e484797cb9e2fc25083b9"), CustomerID = new Guid("0d57629c7d6e484797cb9e2fc25083f8"), OrderDate = DateTime.Parse("2003-09-07"), ShipmentDate = DateTime.Parse("2003-09-11"), OrderNumber=10, Status="доставлено"},
+                new Order {ID = new Guid("0d57629c7d6e484797cb9e2fc25013b9"), CustomerID = new Guid("0d57629c7d6e484797cb9e2fc25083f8"), OrderDate = DateTime.Parse("2003-09-07"), ShipmentDate = DateTime.Parse("2003-09-11"), OrderNumber=10, Status="доставлено"}
                 };
 
             orders.ForEach(s => context.Orders.Add(s));

@@ -15,6 +15,6 @@ namespace WebTrain.Models
         public DateTime ShipmentDate { get; set; }
         public int OrderNumber { get; set; }
         public string Status { get; set; }
-        public virtual ICollection<Customer> Customers { get; set; }
+        public virtual ICollection<OrderElement> OrderElements { get; set; }
     }
 }

@@ -16,7 +16,5 @@ namespace WebTrain.Models
 
         [Column(TypeName = "money")]
         public decimal ItemPrice { get; set; }
-        public virtual ICollection<Order> Orders { get; set; }
-        public virtual ICollection<Product> Products { get; set; }
     }
 }
